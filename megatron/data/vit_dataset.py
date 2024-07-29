@@ -88,7 +88,7 @@ class InpaintingTransform():
         self.train = train
         assert args.fp16 or args.bf16
         self.data_type = torch.half if args.fp16 else torch.bfloat16
-     
+
         if self.train:
             self.transform = T.Compose([
                 T.RandomResizedCrop(self.image_size),
@@ -139,7 +139,7 @@ class InpaintingTransform():
 
     def __call__(self, input):
         trans_input = self.transform(input)
-        mask = self.gen_mask(self.image_size, self.mask_size, 
+        mask = self.gen_mask(self.image_size, self.mask_size,
 			     self.mask_type, self.patch_size)
         mask = mask.unsqueeze(dim=0)
         return trans_input, mask

@@ -5,6 +5,10 @@
 import torch
 from functools import partial
 
+import torch_npu
+from torch_npu.contrib import transfer_to_npu
+import megatron_npu
+
 from megatron import get_args
 from megatron import print_rank_0
 from megatron import get_timers
